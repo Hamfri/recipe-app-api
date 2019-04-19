@@ -8,14 +8,14 @@ class AdminSiteTest(TestCase):
     def setUp(self):
         self.client = Client()
         self.admin_user = get_user_model().objects.create_superuser(
-            email = 'kibzham@gmail.com',
-            password = 'password123'
+            email='kibzham@gmail.com',
+            password='password123'
         )
         self.client.force_login(self.admin_user)
         self.user = get_user_model().objects.create_user(
-            email = 'hamfri@test.com',
-            password = 'password123',
-            name = 'Hamfri'
+            email='hamfri@test.com',
+            password='password123',
+            name='Hamfri'
         )
 
     def test_users_listed(self):
@@ -32,7 +32,7 @@ class AdminSiteTest(TestCase):
         res = self.client.get(url)
 
         self.assertEqual(res.status_code, 200)
-    
+
     def test_user_user_page(self):
         """ Test that the create user page works """
         url = reverse('admin:core_user_add')
